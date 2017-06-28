@@ -1,11 +1,14 @@
-import { FETCH_WEATHER } from '../actions/index'
+import  { FETCH_WEATHER } from '../actions/index';
 
-export default function(state = [], action) {
+export default function(state, action) {
+
+    if (typeof state === 'undefined') {
+        state = [];
+    }
+
     switch(action.type) {
-        case FETCH_WEATHER: 
-        // state.push(action.payload.data) THIS IS BAD
-        // return state.concat([action.payload.data]);  THIS IS GOOD
-        return [ action.payload.data, ...state] //THIS IS GOOD ES6
+        case FETCH_WEATHER:
+            return [ action.payload.data, ...state ];
     }
 
     return state;
